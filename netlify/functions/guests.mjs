@@ -5,7 +5,8 @@ export default async (request, context) => {
 
   if (request.method === "POST") {
     const body = await request.json().catch(() => ({}));
-    const name = body.name ?? "Anonymous";
+    const email = body.email ?? "anonymous@example.com";
+    const score = body.score ?? 0;
 
     await sql(`
       CREATE TABLE IF NOT EXISTS guests (
