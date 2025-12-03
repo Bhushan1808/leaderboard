@@ -7,6 +7,20 @@
   <body>
     <h1>Welcome to the Event 🎉</h1>
     <button id="load">Load guests</button>
+
+    <h2>Add to Leaderboard</h2>
+    <form id="add-form">
+      <label>
+        Email:
+        <input type="email" id="email" required placeholder="you@example.com" />
+      </label>
+      <label>
+        Score:
+        <input type="number" id="score" required placeholder="123" />
+      </label>
+      <button type="submit" id="add">Add</button>
+    </form>
+
     <pre id="output"></pre>
     <script type="module" src="/main.js"></script>
   </body>
