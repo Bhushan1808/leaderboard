@@ -55,10 +55,11 @@ export default async function (request, context) {
         );
       `);
 
-      // Upsert: insert or update score
+      // Upsert: insert or update score, but only keep the higher value
       const rows = await sql`
         INSERT INTO leaderboard (email, score) VALUES (${email}, ${score})
-        ON CONFLICT (email) DO UPDATE SET score = EXCLUDED.score
+        ON CONFLICT (email) DO UPDATE
+          SET score = GREATEST(leaderboard.score, EXCLUDED.score)
         RETURNING email, score;
       `;
 
